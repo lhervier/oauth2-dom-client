@@ -14,10 +14,13 @@ sampleApp.controller(
   this.jsonResponse = null;
   // The access token, in case you want to play with it (note that you DON'T have to)
   this.accessToken = null;
+  // The url of the protected resource
+  this.resUrl = null;
   
   this.callRestApi = function() {
     // Interceptor will add the "Authorization Bearer" header for us !
-    $resource('http://resource.privatenetwork.net:8080/oauth2-spring-res-server/api/subject').get(
+	// 'http://resource.privatenetwork.net:8080/oauth2-spring-res-server/api/subject'
+    $resource(ths.resUrl).get(
         function(jsonResponse) {
           ths.jsonResponse = JSON.stringify(jsonResponse);
         },
